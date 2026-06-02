@@ -1,0 +1,9 @@
+userid,sessionid,timestamp,event_type,page
+U1,S1,2026-04-01 10:00:00,page_view,home
+U1,S1,2026-04-01 10:01:10,click,product
+U1,S1,2026-04-01 10:03:00,scroll,product
+U2,S2,2026-04-01 11:00:00,page_view,landing
+U2,S2,2026-04-01 11:02:30,click,signup
+U3,S3,2026-04-01 12:15:00,page_view,home
+U3,S3,2026-04-01 12:16:45,click,search
+U3,S3,2026-04-01 12:18:10,page_view,results
