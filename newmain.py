@@ -2,8 +2,6 @@ import pandas as pd
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
-import matplotlib.colors as colors
 from matplotlib.patches import Patch
 
 class UXPipe:
@@ -103,11 +101,13 @@ class UXPipe:
         newdata = pd.DataFrame(newdata)
         setattr(self, name, newdata)
         self.data = pd.merge(self.data, newdata, on=key, how='left')
+        pd.write_csv(self.data, f'merged_{name}.csv', index=False)
         return self
     
     def compute_graph(self, group_by="session", quantile_threshold=0.0):
         self.quantile_threshold = quantile_threshold
-
+        if group_by not in ("session", "user"):
+            raise ValueError(f"group_by must be 'session' or 'user', got '{group_by}'")
         group_col = self.sessioncol if group_by == "session" else self.usercol
 
         self.G = nx.DiGraph()
